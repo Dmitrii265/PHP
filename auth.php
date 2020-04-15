@@ -23,10 +23,10 @@
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
               </span>
               </div>
-             <input type="password" class="form-control" placeholder="Введите пароль" aria-label="Имя пользователя" aria-describedby="basic-addon1" name="pass">
+              <input type="password" class="form-control" placeholder="Введите пароль" aria-label="Имя пользователя" aria-describedby="basic-addon1" name="pass">
               </div>
               
-              
+              <p class="d-none text-danger error-message"></p>
               
               <input type="submit" class="btn btn-primary btn-block mt-2" value="Войти">
               <!-- <input type="submit" class="btn btn-primary btn-block mt-2" value="Зарегистрироваться">//---КНОПКА СИНЯЯ -->
@@ -35,13 +35,34 @@
         </div>  
       </div>
     </div>
-<!-- <script>
-  let form = document.queryselector('form');
+<script>
+  let form = document.querySelector('form[action="auth_obr.php"]');
   form.onsubmit = (e) => {
     e.preventDefault();
-    console.log("Пытались отправить форму")ж
+    
+    let formData = new FormData(form);
+    
+    fetch('auth_obr.php', { 
+      method: 'POST',
+      body: formData,
+      
+    })
+      .then(response => response.text())
+      .then(result => {
+        if (result == "ok") {
+          window.location.href = "lk.php";
+        } else {
+          showErrorMessage(result);
+        }
+      });
   }
-</script> -->
+  function showErrorMessage(message) {
+    let messageParagraph = form.querySelector('.error-message');
+    messageParagraph.classList.remove("d-none");
+    messageParagraph.innerHTML = message;
+    
+  } 
+</script> 
 
     
 <? require_once('site_components/footer.php'); ?>

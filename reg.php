@@ -70,6 +70,7 @@
               </div>
               <input type="text" class="form-control" placeholder="Имя пользователя" aria-label="Имя пользователя" aria-describedby="basic-addon1"> // --------------------ОДИН КОНТЕЙНЕР -------------------------//
               </div> -->
+              <p class="d-none text-danger error-message"></p>
               <input type="submit" class="btn btn-primary btn-block mt-2" value="Зарегистрироваться">
               <!-- <input type="submit" class="btn btn-primary btn-block mt-2" value="Зарегистрироваться">//---КНОПКА СИНЯЯ -->
               
@@ -77,5 +78,38 @@
         </div>  
       </div>
     </div>
+ 
+<script>
+  let form = document.querySelector('form[action="reg_obr.php"]');
+  form.onsubmit = (e) => {
+    e.preventDefault();
     
+    let formData = new FormData(form);
+    
+    fetch('reg_obr.php', { 
+      method: 'POST',
+      body: formData,
+      
+    })
+      .then(response => response.text())
+      .then(result => {
+        if (result == "ok") {
+        
+         alert("Пользователь успешно зарегистрирован");
+         window.location.href = "auth.php";
+        
+        
+         
+        } else {
+          showErrorMessage(result);
+        }
+      });
+  }
+  function showErrorMessage(message) {
+    let messageParagraph = form.querySelector('.error-message');
+    messageParagraph.classList.remove("d-none");
+    messageParagraph.innerHTML = message;
+    
+  } 
+</script> 
 <? require_once('site_components/footer.php'); ?>

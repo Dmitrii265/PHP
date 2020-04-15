@@ -67,11 +67,8 @@ $result = $mysqli->query("INSERT INTO `users`(`login`, `password`, `name`, `last
 if(!$result) {
   exit("Не удалось добавить пользователя");
 }
-exit("Пользователь $login успешно зарегистрирован");
-
-
-
-
+exit("ok");// замена с нижнего крммента
+/*exit("Пользователь $login успешно зарегистрирован");*/
 
 //exit("$login | $pass | $passrepeat | $name | $lastname | $patronymic | $birthdate <br>");// как return,  после него ничего е работает //
 
