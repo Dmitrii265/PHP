@@ -71,7 +71,7 @@
               <input type="text" class="form-control" placeholder="Имя пользователя" aria-label="Имя пользователя" aria-describedby="basic-addon1"> // --------------------ОДИН КОНТЕЙНЕР -------------------------//
               </div> -->
               <p class="d-none text-danger error-message"></p>
-              <input type="submit" class="btn btn-primary btn-block mt-2" value="Зарегистрироваться">
+              <input type="submit" class="btn btn-primary btn-block mt-2 mb-5" value="Зарегистрироваться">
               <!-- <input type="submit" class="btn btn-primary btn-block mt-2" value="Зарегистрироваться">//---КНОПКА СИНЯЯ -->
               
           </form>
